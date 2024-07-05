@@ -112,7 +112,7 @@ namespace Identity.API.IdentityServer
                     ClientSecrets = {new Secret("secret".Sha256())},
                     RedirectUris = {
                         "http://localhost:3001/api/auth/callback/web-app",
-                        "http://localhost:8080/api/auth/callback/web-app",
+                        "http://localhost:30010/api/auth/callback/web-app",
                         "http://localhost:80/api/auth/callback/web-app"
                     },
                     PostLogoutRedirectUris = {"http://localhost:5002/signout-callback-oidc"},

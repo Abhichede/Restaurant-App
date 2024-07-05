@@ -8,7 +8,7 @@ services:
       - QUARKUS_DATASOURCE_PASSWORD=Passw0rd!
       - KAFKA_BOOTSTRAP_SERVERS=kafka:9092
       - QUARKUS_GRPC_CLIENTS_PAYMENTSERVICE_HOST=payment-api
-      - QUARKUS_GRPC_CLIENTS_PAYMENTSERVICE_PORT=8080
+      - QUARKUS_GRPC_CLIENTS_PAYMENTSERVICE_PORT=8981
       - QUARKUS_LOG_CONSOLE_JSON=true
       - QUARKUS_OPENTELEMETRY_TRACER_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
       - QUARKUS_OPENTELEMETRY_PROPAGATORS=ottrace
@@ -19,7 +19,7 @@ services:
       - KAFKA_BROKER=kafka:9092
       - ORDERS_TOPIC=orders
       - IDENTITY_URL=http://identity-api
-      - AUTH_URL=http://localhost:8080/identity
+      - AUTH_URL=http://localhost:30010/identity
       - BASE_PATH=/shoppingcart
       - OTEL_EXPORTER_OTLP_ENDPOINT=otel-collector:4317
 
@@ -34,7 +34,7 @@ services:
       - PORT=30001
       - HOST=0.0.0.0
       - CART_URL=cart-api:8081
-      - PAYMENT_API_URL=payment-api:8080
+      - PAYMENT_API_URL=payment-api:8981
       - KAFKA_BROKER=kafka:9092
       - CHECKOUT_TOPIC=checkout
       - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
@@ -55,7 +55,7 @@ services:
     environment:
       - INTERNAL_API_BASE_URL=http://traefik:80
       - NEXT_SHARP_PATH=./node_modules/sharp
-      - AUTH_ISSUER=http://host.docker.internal:8080/identity
+      - AUTH_ISSUER=http://host.docker.internal:30010/identity
 
   identity-api:
     environment:
@@ -65,11 +65,11 @@ services:
       - DB_USER=admin
       - DB_PASSWORD=Passw0rd!
       - PATH_BASE=/identity
-      - MENU_API_URL=http://localhost:8080/menu
-      - ORDER_API_URL=http://localhost:8080/order
-      - BASKET_API_URL=http://localhost:8080/basket
-      - DASHBOARD_APP_URL=http://localhost:8080/dashboard
-      - IDENTITY_URL_PUB=http://localhost:8080/identity
+      - MENU_API_URL=http://localhost:30010/menu
+      - ORDER_API_URL=http://localhost:30010/order
+      - BASKET_API_URL=http://localhost:30010/basket
+      - DASHBOARD_APP_URL=http://localhost:30010/dashboard
+      - IDENTITY_URL_PUB=http://localhost:30010/identity
 
   # connect:
   # pgcli 'postgresql://admin:Passw0rd!@localhost:5433/orderdb'

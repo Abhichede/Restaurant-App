@@ -32,4 +32,6 @@ trap close INT
 docker-compose -f docker-compose.yml -f docker-compose.override.yml \
   -f docker-compose.traefik.yml \
   -f docker-compose.kafka.yml \
-  --project-directory . up --build
+  -f docker-compose.grafana.yaml \
+  -f docker-compose.otel.yml \
+  --project-directory . up --build -d

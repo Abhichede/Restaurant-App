@@ -1,6 +1,5 @@
 export const environment = {
     production: false,
-    apiUrl: 'http://localhost:8080/menu',
-    identityUrl : 'http://localhost:8080/identity',
+    apiUrl: 'http://localhost:30010/menu',
+    identityUrl : 'http://localhost:30010/identity',
   };
-  

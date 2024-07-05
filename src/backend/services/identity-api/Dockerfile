@@ -17,7 +17,7 @@ RUN dotnet build api/Identity.API.csproj -c Release -o /app
 FROM build AS publish
 RUN dotnet publish api/Identity.API.csproj -c Release -o /app
 
-FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine3.19 AS final
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-alpine AS final
 WORKDIR /app
 
 COPY --from=publish /app .

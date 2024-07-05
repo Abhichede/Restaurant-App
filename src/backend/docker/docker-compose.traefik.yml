@@ -10,14 +10,9 @@ services:
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
       - "--entrypoints.web.address=:80"
-      - "--tracing.openTelemetry.address=otel-collector:4317"
-      - "--tracing.openTelemetry.insecure=true"
-      - "--tracing.openTelemetry.grpc=true"
-      - "--metrics.openTelemetry.insecure=true"
-      - "--metrics.openTelemetry.address=otel-collector:4318"
     ports:
-      - "8080:80"
-      - "8081:8080"
+      - "30010:80"
+      - "30011:8080"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
 
@@ -43,7 +38,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.catalog.rule=PathPrefix(`/catalog/`)"
-      - "traefik.port=8000"
+      - "traefik.port=8983"
 
   cart-api:
     labels:
@@ -55,7 +50,7 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.order.rule=PathPrefix(`/order/`)"
-      - "traefik.port=8082"
+      - "traefik.port=8982"
 
   checkout-api:
     labels:

@@ -6,6 +6,7 @@ services:
     build: ../services/identity-api
     depends_on:
       - identity-db
+    platform: "linux/arm64"
     ports:
       - "5001:80"
     restart: always
@@ -24,6 +25,8 @@ services:
     build: ../services/catalog-api
     depends_on:
       - catalog-db
+    ports:
+      - "8983:8000"
     restart: always
 
   cart-api:
@@ -45,11 +48,14 @@ services:
     depends_on:
       - order-db
       - payment-api
+    ports:
+      - "8982:8080"
 
   payment-api:
     image: restaurant/payment-api
     build: ../services/payment-api
     ports:
+      - "8981:8080"
       - "8980:8980"
 
   # dashboard-app:
